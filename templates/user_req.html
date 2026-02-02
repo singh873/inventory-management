@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Request product</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="form">
+        <h1>Create a new Request</h1>
+        <form action="/user_req/{{ prod.id }}/{{ user_id }}" method="POST">
+
+            <label for="name">Product Name </label><br>
+            <input id="name" type="text" name="prod_name" value="{{prod.prod_name}}" readonly ><br>
+
+            <label for="cat">Product Catogery</label><br>
+            <input id="cat" type="text" name="cat" value="{{prod.category}}" readonly ><br>
+
+            <label for="qunt">Units Required</label><br>
+            <input id="qunt" type="number" name="qunt" value="{{prod.quantity}}" required ><br>
+
+            <input type="submit" class="btn" value="Request">
+        </form>
+        
+    </div>
+</body>
+</html>

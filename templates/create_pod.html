@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Create product</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="form">
+        <h1>Create a new product</h1>
+        <form action="/create_pod" method="POST">
+
+            <label for="name">Product Name </label><br>
+            <input id="name" type="text" name="pod_name" placeholder="Product1"><br>
+
+            <label for="cat">Product Catogery</label><br>
+            <input id="cat" type="text" name="cat" placeholder="Catogery1"><br>
+
+            <label for="qunt">Initial Qunatity</label><br>
+            <input id="qunt" type="number" name="qunt"><br>
+
+            <label for="cost">Cost/Unit</label><br>
+            <input id="cost" type="number" name="cost"><br>
+
+            <input type="submit" class="btn" value="Create">
+        </form>
+        
+    </div>
+</body>
+</html>

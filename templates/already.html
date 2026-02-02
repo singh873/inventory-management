@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Already Exists</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .box {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #d9534f;
+        }
+        a {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: white;
+            background: #0275d8;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+        a:hover {
+            background: #025aa5;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>User Already Exists</h2>
+    <p>This email or username is already registered.</p>
+    <a href="/login">Go to Login</a>
+</div>
+
+</body>
+</html>

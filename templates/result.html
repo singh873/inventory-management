@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Result</title>
+    
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+</head>
+<body>
+
+    <div class="main">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Welcome Admin </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                    <button><a class="nav-link active" aria-current="page" href="/admin/request">Back</a></button>
+                    </li>
+
+                    <li class="nav-item">
+                    <button><a class="nav-link active" aria-current="page" href="/summary"> Summary </a></button>
+                    </li>
+
+                    <li class="nav-item">
+                    <button><a class="nav-link active" aria-current="page" href="/login"> Log out </a></button>
+                    </li>
+
+                    </ul>
+                <form class="d-flex" role="search" action="/search" method="GET" >
+                    <input class="form-control me-2" type="search" placeholder="Search" name="search" aria-label="Search"/>
+                    <select class="form-select me-2" aria-label="Default select example" name="key">
+                        <option selected > Select </option>
+                        <option value="user" > User </option>
+                        <option value="product" > Product </option>
+                    </select>
+                    <input class="btn btn-outline-success" type="submit" value="Search">
+                </form>
+                
+                </div>
+            </div>
+        </nav>
+    </div>
+
+
+<div class="table" >
+    <h2>Your Search Result</h2>
+
+    {% if key == "user" and result %}
+        <h3>User Info</h3>
+        <table>
+            <tr>
+                <th>User Id</th>
+                <th>User Name</th>
+                <th>User Email</th>
+            </tr>
+            <tr>
+                <td>{{ result.id }}</td>
+                <td>{{ result.username }}</td>
+                <td>{{ result.email }}</td>
+            </tr>
+        </table>
+        <h3>Requests for this Product</h3>
+
+        {% if requests %}
+            <table>
+                <tr>
+                    <th>Request Id</th>
+                    <th>User Id</th>
+                    <th>User Name</th>
+                    <th>Units Requested</th>
+                    <th>Status</th>
+                </tr>
+                {% for req in requests %}
+                <tr>
+                    <td>{{ req.id }}</td>
+                    <td>{{ req.user_id }}</td>
+                    <td>{{ req.user.username }}</td>
+                    <td>{{ req.units_requested }}</td>
+                    <td>{{ req.status }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+
+    {% elif key == "product" and result %}
+        <h3>Product Info</h3>
+        <table>
+            <tr>
+                <th>Product Id</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Available Qty</th>
+            </tr>
+            <tr>
+                <td>{{ result.id }}</td>
+                <td>{{ result.prod_name }}</td>
+                <td>{{ result.category }}</td>
+                <td>{{ result.price }}</td>
+                <td>{{ result.quantity }}</td>
+            </tr>
+        </table>
+
+        <h3>Requests for this Product</h3>
+
+        {% if requests %}
+            <table>
+                <tr>
+                    <th>Request Id</th>
+                    <th>User Id</th>
+                    <th>User Name</th>
+                    <th>Units Requested</th>
+                    <th>Status</th>
+                </tr>
+                {% for req in requests %}
+                <tr>
+                    <td>{{ req.id }}</td>
+                    <td>{{ req.user_id }}</td>
+                    <td>{{ req.user.username }}</td>
+                    <td>{{ req.units_requested }}</td>
+                    <td>{{ req.status }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>No requests found for this product.</p>
+        {% endif %}
+
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+</div>
+
+
+</body>
+</html>

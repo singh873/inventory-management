@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="form">
+        <h1>Login From</h1>
+        <form action="/login" method="POST">
+
+            <label for="user">User ID</label><br>
+            <input id="user" type="text" name="user_name"><br>
+
+            <label for="pass">Password</label><br>
+            <input id="pass" type="password" name="pwd"><br>
+
+            <input type="submit" class="btn" value="Login">
+        </form>
+        <p>Do not have an Account? <a href="/register">Register Now</a></p>
+    </div>
+</body>
+</html>

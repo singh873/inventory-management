@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Not Found</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .error-box {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .error-box h2 {
+            color: #d9534f;
+            margin-bottom: 10px;
+        }
+        .error-box p {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .error-box a {
+            text-decoration: none;
+            background: green;
+            color: white;
+            padding: 10px 16px;
+            border-radius: 6px;
+        }
+        .error-box a:hover {
+            background: darkgreen;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="error-box">
+        <h2>User Not Found</h2>
+        <p>No account exists with the provided username.</p>
+        <a href="/register">Go Back to Register</a>
+    </div>
+
+</body>
+</html>

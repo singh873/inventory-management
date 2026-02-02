@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="main">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Welcome {{ this_user.username }} </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                    <button><a class="nav-link active" aria-current="page" href="/admin/request">Request</a></button>
+                    </li>
+
+                    <li class="nav-item">
+                    <button><a class="nav-link active" aria-current="page" href="/summary"> Summary </a></button>
+                    </li>
+
+                    <li class="nav-item">
+                    <button><a class="nav-link active" aria-current="page" href="/login"> Log out </a></button>
+                    </li>
+
+                    </ul>
+                <form class="d-flex" role="search" action="/search" method="GET" >
+                    <input class="form-control me-2" type="search" placeholder="Search" name="search" aria-label="Search"/>
+                    <select class="form-select me-2" aria-label="Default select example" name="key">
+                        <option selected > Select </option>
+                        <option value="user" > User </option>
+                        <option value="product" > Product </option>
+                    </select>
+                    <input class="btn btn-outline-success" type="submit" value="Search">
+                </form>
+                
+                </div>
+            </div>
+        </nav>
+    
+        <div class="table">
+
+            <div class="h_btn">
+                <h3>View All Products</h3>
+                <a href="/create_pod" class="g_btn">Create Products</a>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Units Available</th>
+                        <th>Amount/unit</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                    {% for i in all_prod %}
+                    <tr>
+                        <td>{{ i.prod_name }}</td>
+                        <td>{{ i.category }}</td>
+                        <td>{{ i.quantity }}</td>
+                        <td>{{ i.price }}</td>
+                        <td>{{ i.status }}</td>
+                        <td>
+                            <a href="/update_prod/{{ i.id }}" class="g_btn">Update</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+            </table>
+
+        </div>
+    </div>
+    
+    
+</body>
+</html>
